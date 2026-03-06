@@ -1,0 +1,31 @@
+# project.config.yml — 项目变量配置（每项目唯一）
+
+project:
+  name: ""                    # 项目名
+  description: ""             # 一句话描述
+  language: ""                # 主语言 (python/typescript/...)
+  python_version: ""          # e.g. "3.12"
+
+commands:
+  test: ""                    # e.g. "python -m pytest tests/ -v"
+  lint: ""                    # e.g. "ruff check ."
+  build: ""                   # e.g. "python -m build"
+  run: ""                     # e.g. "python run_main.py"
+
+entry_points:
+  config: ""                  # e.g. "src/config.py"
+  main: ""                    # e.g. "src/main.py"
+  tests: ""                   # e.g. "tests/"
+
+success_criteria:
+  - ""                        # e.g. "回测结果年化收益 ±2% 以内"
+  - ""                        # e.g. "所有测试通过"
+
+external_links:
+  source: ""                  # e.g. 需求来源 URL
+  docs: ""                    # e.g. 平台文档 URL
+  api_reference: ""           # e.g. API 文档 URL
+
+dependencies:
+  runtime: []                 # e.g. [httpx, websockets]
+  dev: []                     # e.g. [pytest, pytest-asyncio, respx]
