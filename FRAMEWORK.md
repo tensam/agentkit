@@ -51,6 +51,7 @@
 - [ ] 未引入层违规
 - [ ] 共享逻辑已抽取可复用抽象
 - [ ] memory/STATE.md 和 memory/LOG.md 已更新
+- [ ] 代码 + memory 文件已 git commit
 
 ---
 
@@ -85,4 +86,36 @@
 
 ---
 
-*AgentKit Framework v1.0 | 跨项目复用 | 不包含业务词汇*
+## 9. Git 纪律
+
+### 提交时机
+
+| 事件 | 提交内容 |
+|------|----------|
+| 薄切片完成（代码 + 测试通过） | 代码文件 + memory 文件一起提交 |
+| 纯 memory 更新（无代码改动） | memory 文件单独提交 |
+| 初始化部署 | 所有 AgentKit 文件 |
+
+### 提交规范
+
+- commit message 格式：`类型: 简要描述`
+  - 类型：`feat` / `fix` / `refactor` / `test` / `docs` / `memory` / `init`
+  - `memory:` 前缀用于纯记忆更新（无代码改动时）
+- memory 文件和对应代码改动**放在同一个 commit**，不要分开
+- 不提交临时文件、调试输出、敏感信息
+
+### 分支策略
+
+- 默认在 `main` 上工作（个人项目）
+- 大改动 / 实验性尝试 → 开 feature 分支，验证通过再合回 main
+- 不 force push，不 rebase 已推送的 commit
+
+### 操作纪律
+
+- 每次提交前先 `git status` + `git diff` 确认变更内容
+- 不盲目 `git add .` — 逐个确认要提交的文件
+- 操作失误时优先用 `git revert`，不用 `git reset --hard`
+
+---
+
+*AgentKit Framework v1.1 | 跨项目复用 | 不包含业务词汇*

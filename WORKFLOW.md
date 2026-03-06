@@ -19,7 +19,7 @@
 ## 执行循环（每个薄切片）
 
 ```
-Clarify → Test → Implement → Refactor → Write Memory
+Clarify → Test → Implement → Refactor → Write Memory → Commit
 ```
 
 1. **Clarify** — 明确目标行为（1-3 bullet points）
@@ -27,6 +27,7 @@ Clarify → Test → Implement → Refactor → Write Memory
 3. **Implement** — 最小代码通过测试
 4. **Refactor** — 测试全绿后才重构（提取复用）
 5. **Write Memory** — 写入文件（见下方触发规则）
+6. **Commit** — 代码 + memory 文件一起提交（见下方 git 规则）
 
 ---
 
@@ -71,12 +72,39 @@ INDEX.md  → 追加索引行（关键词 → 文件#锚点）
 
 ---
 
+## Git 提交规则
+
+### 提交时机
+
+| 事件 | 提交什么 |
+|------|----------|
+| 薄切片完成（代码 + 测试通过 + memory 已写） | 代码 + memory 一起提交 |
+| 纯 memory 更新（发现坑点、做决策、无代码改动） | memory 文件单独提交 |
+| 会话结束前 | 确保所有未提交的 memory 变更已 commit |
+
+### 提交流程
+
+```
+1. git status          → 确认变更内容
+2. git diff            → 检查改动是否正确
+3. git add <具体文件>   → 不用 git add .
+4. git commit           → message 格式见 FRAMEWORK.md
+```
+
+### 纪律
+
+- **memory 和代码同一个 commit** — 不要代码提交了但 memory 没提交
+- **不跳过提交** — 禁止做完三个切片才提一次，每个切片一个 commit
+- **会话结束前必须提交** — 未提交的 memory 变更 = 记忆丢失
+
+---
+
 ## 任务粒度
 
 - 每次只做一个**薄切片**（最小可验证增量）
 - 避免一次性大改动
-- 每步完成后写入 STATE，再开始下一步
+- 每步完成后写入 STATE + commit，再开始下一步
 
 ---
 
-*AgentKit Workflow v1.1 | clarify→test→impl→refactor→write memory*
+*AgentKit Workflow v1.2 | clarify→test→impl→refactor→write memory→commit*
