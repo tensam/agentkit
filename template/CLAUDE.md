@@ -1,37 +1,25 @@
 # CLAUDE.md
 
+## ⚠️ CHECKPOINT — 每完成一步必须执行（不可跳过）
+
+**完成任何代码修改、调试、或决策后，立即执行以下动作，再做下一步：**
+
+1. `memory/STATE.md` → 覆盖为当前状态
+2. `memory/LOG.md` → 追加一条记录
+3. `memory/TASK.md` → 勾选已完成的步骤
+4. 如发现坑点/技巧 → 写入 `memory/KNOWLEDGE/*.md` + `INDEX.md`
+5. `git add` 代码 + memory → `git commit`
+
+**用 Edit/Write 工具直接修改文件。说"我会更新"但没有实际写入 = 违规。**
+
+---
+
 ## Mandatory Workflow
 
 - Before any work: read memory/PROJECT.md, memory/STATE.md, memory/TASK.md, memory/LOG.md
 - Also consult memory/KNOWLEDGE/INDEX.md for project-specific tips/links.
-- Follow TDD: tests first → minimal implementation → refactor → write memory.
-
-## Memory Write Rules（必须内化，不可遗忘）
-
-**用 Edit/Write 工具直接修改文件，不是在聊天里打印文本。**
-
-### 何时写
-
-| 事件 | 写什么 |
-| ---- | ------ |
-| 完成一个步骤 | STATE.md（覆盖）+ LOG.md（追加）+ TASK.md（勾选） |
-| 发现坑点/技巧 | KNOWLEDGE/*.md + INDEX.md |
-| 做出技术决策 | DECISIONS.md + INDEX.md |
-| 任务全部完成 | STATE.md + TASK.md + LOG.md |
-| 会话即将结束 | STATE.md + LOG.md（确保进度已持久化） |
-
-### 纪律
-
-- **完成一步写一步** — 不攒着批量写
-- **不说不写** — 禁止"我会更新 STATE.md"然后没有实际写入
-- **不确定要不要记？记** — KNOWLEDGE 宁多勿少
-
-### Git 提交
-
-- 每个薄切片完成后：代码 + memory 一起 commit
-- 纯 memory 更新：memory 文件单独 commit
-- 会话结束前：确保所有 memory 变更已 commit
-- commit message 格式：`类型: 简要描述`（feat/fix/refactor/test/docs/memory/init）
+- Follow TDD: tests first → minimal implementation → refactor → checkpoint.
+- 会话即将结束时：确保 STATE.md + LOG.md 已写入并 commit。
 
 ## Knowledge Capture Rule
 
