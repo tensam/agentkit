@@ -52,6 +52,10 @@ Agent(
 - Follow engineering rules in ~/project/agentkit/FRAMEWORK.md
 - Follow work cadence in ~/project/agentkit/WORKFLOW.md
 
+## Skill 接管规则
+
+当 Skill（如 guorn-backtest、feature-dev 等）接管工作流时，Skill 自身不包含 memory 更新逻辑。**Skill 执行完毕后，仍需执行 CHECKPOINT。** 不因 Skill 接管而跳过 memory 更新。
+
 ## Project-Specific Rules
 
 <!-- 在此添加本项目特有的规则，不属于通用框架的部分 -->
