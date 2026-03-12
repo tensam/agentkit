@@ -13,19 +13,24 @@
 /agentkit-init 微信自动化，读群聊  ← 快速模式，直接执行
 ```
 
-## 核心路径
+## 核心路径（自动解析）
+
+**运行时自动从 `~/.config/agentkit/config` 读取路径。** 执行 `install.sh` 即可自动生成此配置。
 
 ```
-AGENTKIT_ROOT = <你的 agentkit 克隆路径，如 ~/project/agentkit>
+# 读取 ~/.config/agentkit/config 获取：
+AGENTKIT_ROOT = <自动>
 TEMPLATE_DIR  = $AGENTKIT_ROOT/template/
 FRAMEWORK     = $AGENTKIT_ROOT/FRAMEWORK.md
 WORKFLOW      = $AGENTKIT_ROOT/WORKFLOW.md
-REGISTRY      = <你的项目注册表路径，如 ~/project/REGISTRY.md>
+REGISTRY      = <自动>
 ```
 
-> **安装后必须**：将上面的 `AGENTKIT_ROOT` 和 `REGISTRY` 改为你的实际绝对路径。
-
 ## 执行步骤
+
+### 步骤 0: 读取配置
+
+**用 Bash 工具读取 `~/.config/agentkit/config`**，从中获取 `AGENTKIT_ROOT` 和 `REGISTRY` 的值。如果文件不存在，提示用户先执行 `install.sh`。
 
 ### 步骤 1: 询问项目描述（引导）
 
