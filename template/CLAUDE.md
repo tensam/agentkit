@@ -49,12 +49,12 @@ Agent(
 
 ## Reusable Framework
 
-- Follow engineering rules in ~/project/agentkit/FRAMEWORK.md
-- Follow work cadence in ~/project/agentkit/WORKFLOW.md
+- Follow engineering rules in {{AGENTKIT_PATH}}/FRAMEWORK.md
+- Follow work cadence in {{AGENTKIT_PATH}}/WORKFLOW.md
 
 ## Skill 接管规则
 
-当 Skill（如 guorn-backtest、feature-dev 等）接管工作流时，Skill 自身不包含 memory 更新逻辑。**Skill 执行完毕后，仍需执行 CHECKPOINT。** 不因 Skill 接管而跳过 memory 更新。
+当 Skill 接管工作流时，Skill 自身不包含 memory 更新逻辑。**Skill 执行完毕后，仍需执行 CHECKPOINT。** 不因 Skill 接管而跳过 memory 更新。
 
 ## Project-Specific Rules
 

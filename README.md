@@ -35,9 +35,6 @@ agentkit/
 │           ├── GOTCHAS.md       坑点 / 踩雷记录
 │           ├── RECIPES.md       操作配方（how-to）
 │           └── DECISIONS.md     关键决策（为什么这样做）
-│
-└── projects/                 ← 项目实例（真实数据）
-    └── guorn/                   果仁网回测复现（示例项目）
 ```
 
 ### 各层职责
@@ -99,7 +96,7 @@ agent 启动时自动读取 CLAUDE.md，进入标准工作流：
 
 ## 设计原则
 
-- **框架不含业务词** — FRAMEWORK.md 里没有"果仁"、没有"回测"，换项目零修改
+- **框架不含业务词** — FRAMEWORK.md 不含任何项目特定词汇，换项目零修改
 - **配置集中管理** — `project.config.yml` 一处改，未来可接 hook/脚本自动读取
 - **经验是项目的第二大脑** — KNOWLEDGE 不污染 STATE，不污染 CLAUDE.md，独立增长
 - **薄切片工作法** — 每次只做一件事，做完更新状态，再做下一件
