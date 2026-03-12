@@ -92,33 +92,26 @@ cd ~/project/agentkit && ./install.sh
 
 ## 使用方法
 
-### 一键部署（推荐）
-
-`/agentkit-init` 是引导式部署命令，支持两种模式：
-
-```
-/agentkit-init                    ← 引导模式：Claude 会询问项目描述
-/agentkit-init Python CLI 记账工具  ← 快速模式：直接执行，跳过询问
-```
-
-引导模式下，Claude 会先问你"这个项目要做什么？"，然后根据回答自动完成：
-
-1. 检查目标目录状态（已有代码会自动扫描提取信息）
-2. 动态读取模板，根据项目描述智能填充所有文件
-3. 将 `{{AGENTKIT_PATH}}` 替换为 agentkit 实际路径
-4. 初始化 git + `.gitignore` + 首次提交
-5. 输出部署确认清单 + 第一个待办任务
-
-### 手动部署
+### 为新项目部署 AgentKit
 
 ```bash
-# 1. 复制模板
-cp -r ~/project/agentkit/template/* your-project/
+# 1. 进入你的项目目录
+cd ~/project/my-new-project
 
-# 2. 编辑 CLAUDE.md，将 {{AGENTKIT_PATH}} 替换为 agentkit 的实际绝对路径
-# 3. 编辑 project.config.yml 填入项目信息
-# 4. 编辑 memory/PROJECT.md 写入目标和约束
+# 2. 启动 Claude Code
+claude
+
+# 3. 输入部署命令（两种模式）
+/agentkit-init                      # 引导模式：Claude 会问你项目做什么
+/agentkit-init Python CLI 记账工具    # 快速模式：直接传入描述，跳过询问
 ```
+
+Claude 会根据你的描述自动完成：
+
+1. 扫描目录（已有代码会自动提取信息）
+2. 读取模板，智能填充所有文件
+3. 初始化 git + `.gitignore` + 首次提交
+4. 输出部署清单 + 第一个待办任务
 
 ### 开发过程
 
