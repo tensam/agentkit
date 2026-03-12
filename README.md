@@ -2,6 +2,8 @@
 
 让 AI Agent 在项目开发中拥有**长期记忆**、**经验沉淀**和**工程纪律**的框架。专为 Claude Code 设计。
 
+[English](./README.en.md)
+
 ## 解决什么问题
 
 用 Claude Code 做项目开发时，反复遇到几个痛点：
