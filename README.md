@@ -73,36 +73,51 @@ agentkit/
 Clarify → Test → Implement → Refactor → Write Memory → Commit
 ```
 
+## 安装
+
+### 1. 克隆仓库
+
+```bash
+git clone https://github.com/tensam/agentkit.git ~/project/agentkit
+```
+
+### 2. 安装 Slash Command
+
+将 `/agentkit-init` 命令安装到 Claude Code：
+
+```bash
+# 复制 skill 文件到 Claude Code 的全局命令目录
+cp agentkit/commands/agentkit-init.md ~/.claude/commands/
+```
+
+然后编辑 `~/.claude/commands/agentkit-init.md`，将 `AGENTKIT_ROOT` 路径改为你的实际克隆路径。
+
+安装完成后，在任意项目目录中打开 Claude Code 即可使用 `/agentkit-init`。
+
 ## 使用方法
 
 ### 一键部署（推荐）
 
-在目标项目目录下打开 Claude Code，运行：
+`/agentkit-init` 是引导式部署命令，支持两种模式：
 
 ```
-/agentkit-init 项目描述、技术栈、目标...
+/agentkit-init                    ← 引导模式：Claude 会询问项目描述
+/agentkit-init Python CLI 记账工具  ← 快速模式：直接执行，跳过询问
 ```
 
-示例：
+引导模式下，Claude 会先问你"这个项目要做什么？"，然后根据回答自动完成：
 
-```
-/agentkit-init Python CLI 记账工具，解析银行 CSV，自动分类生成报表
-/agentkit-init React + Node 电商后台，管理商品和订单
-```
-
-Claude 会自动完成：
-
-1. 检查目标目录状态（已有代码/空项目）
-2. 读取模板，根据项目描述智能填充所有文件
+1. 检查目标目录状态（已有代码会自动扫描提取信息）
+2. 动态读取模板，根据项目描述智能填充所有文件
 3. 将 `{{AGENTKIT_PATH}}` 替换为 agentkit 实际路径
-4. 初始化 git + 首次提交
-5. 输出部署确认清单
+4. 初始化 git + `.gitignore` + 首次提交
+5. 输出部署确认清单 + 第一个待办任务
 
 ### 手动部署
 
 ```bash
 # 1. 复制模板
-cp -r agentkit/template/* your-project/
+cp -r ~/project/agentkit/template/* your-project/
 
 # 2. 编辑 CLAUDE.md，将 {{AGENTKIT_PATH}} 替换为 agentkit 的实际绝对路径
 # 3. 编辑 project.config.yml 填入项目信息
